@@ -1,0 +1,5 @@
+export { default as Loadfile } from "./Loadfile"
+export { default as AddMovie } from "./AddMovie"
+export { default as Dropdown } from "./Dropdown"
+export { default as MovieHero } from "./MovieHero"
+export { default as MovieThumbnail } from "./MovieThumbnail"

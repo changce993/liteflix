@@ -1,0 +1,5 @@
+export const SET_FEATURED = "SET_FEATURED"
+export const SET_POPULAR = "SET_POPULAR"
+export const GET_MY_MOVIES = "GET_MY_MOVIES"
+export const UPLOAD_MOVIES = "UPLOAD_MOVIES"
+export const SET_SHOW_LIST = "SET_SHOW_LIST"
