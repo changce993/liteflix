@@ -99,8 +99,8 @@ const Modal = () => {
         )}
 
         <Button
-          disable={String(isDisabled)}
-          confirm={!isDisabled ? true : undefined}
+          disable={isDisabled ? "true" : null}
+          confirm={!isDisabled ? "true" : null}
           onClick={successScreen ? handleCancel : !isDisabled ? handleNext : null}
         >
           {successScreen ? "ir a home" : "subir película"}

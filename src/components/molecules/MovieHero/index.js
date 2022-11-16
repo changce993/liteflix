@@ -5,6 +5,8 @@ import { Button, SplitText, Text } from "components/atoms"
 import { getImage, getRandomArbitrary } from "utils"
 import { fromLiteflixx, image, splitText } from "./animations"
 import { motion } from "framer-motion"
+import { ReactComponent as More } from "assets/icons/more.svg"
+import { ReactComponent as Play } from "assets/icons/simple_play.svg"
 
 const Hero = () => {
   const { movies, getFeatured } = useContext(movieContext)
@@ -42,8 +44,8 @@ const Hero = () => {
       </Title>
 
       <Group>
-        <Button custom={0}>Reproducir</Button>
-        <Button custom={1} variant="secondary">Mi lista</Button>
+        <Button custom={0}><Play/> <span>Reproducir</span></Button>
+        <Button custom={1} variant="secondary"><More/>Mi lista</Button>
       </Group>
     </Wrapper>
   )

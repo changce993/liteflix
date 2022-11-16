@@ -9,10 +9,11 @@ const Button = styled(motion.button)`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: .25rem;
   color: ${props => props.theme.colors[(props.disable || props.confirm) ? "black" : "white"]};
   font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
+  font-family: ${props => props.theme.fontFamily.primary};
   cursor: ${props => props.disable ? "initial" : "pointer"};
   backdrop-filter: blur(4px);
 
