@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -18,7 +19,7 @@ export const Wrapper = styled.div`
   }
 `
 
-export const List = styled.div`
+export const List = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   place-items: center;

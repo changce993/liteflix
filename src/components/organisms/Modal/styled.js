@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as Cross } from "assets/icons/cross.svg"
+import { Text } from 'components/atoms';
 
 export const Layout = styled.div`
   position: fixed;
@@ -41,4 +42,14 @@ export const Close = styled(Cross)`
   top: 2rem;
   right: 2rem;
   cursor: pointer;
+`
+
+export const Error = styled(Text)`
+  text-align: center;
+  color: ${props => props.theme.colors.error};
+  opacity: .8;
+  margin: -1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 `

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { ReactComponent as Play } from "assets/icons/play.svg"
+import { motion } from 'framer-motion';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
   width: 250px;
   max-width: 100%;
   aspect-ratio: 327/215;
-  background-image: url(${props => props.bgImg});
+  background-image: url(${props => props.bgimg});
   background-position: center;
   background-size: 130%;
   background-repeat: no-repeat;
@@ -17,7 +18,7 @@ export const Wrapper = styled.div`
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
-  transition: ${props => props.theme.transition.timming};
+  transition: background-size ${props => props.theme.transition.timming};
 
   ::after {
     content: "";
@@ -30,7 +31,6 @@ export const Wrapper = styled.div`
   }
 
   :hover {
-    transform: scale(1.05);
     background-size: 120%;
   }
 `

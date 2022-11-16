@@ -4,6 +4,7 @@ import { AddMovie } from "components/molecules"
 import { Wrapper, Group, NavigationLayout, NavigationContent, Left, Right, HideMobile, ShowMobile } from "./styled"
 import { ReactComponent as Bell } from "assets/icons/bell.svg"
 import { ReactComponent as Cross } from "assets/icons/cross.svg"
+import { container } from "./animations"
 
 const Navbar = () => {
   const [ isOpen, setIsOpen ] = useState(false)
@@ -15,7 +16,7 @@ const Navbar = () => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper variants={container} initial="initial" animate="animate">
       <ShowMobile>
         <ButtonBurger
           as={isOpen && Cross}

@@ -7,9 +7,6 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
-    font-family: ${props => props.theme.fontFamily.primary};
-    letter-spacing: ${props => props.theme.letterSpacing.primary};
     outline: none;
     text-decoration: none;
     list-style: none;
@@ -33,5 +30,11 @@ export default createGlobalStyle`
     ${props => props.theme.respond.desktop} {
       overflow: hidden;
     }
+  }
+
+  label.hidden {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
   }
 `;

@@ -9,7 +9,8 @@ const Avatar = styled.img`
 `
 
 Avatar.defaultProps = {
-  src: avatar
+  src: avatar,
+  alt: "avatar default picture"
 }
 
 export default Avatar

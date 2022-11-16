@@ -1,4 +1,5 @@
 import { Text } from 'components/atoms';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
@@ -6,7 +7,7 @@ export const Wrapper = styled.section`
   top: 0;
   left: 0;
   height: 100vh;
-  background-image: url(${props => props.bgImg});
+  background-image: url(${props => props.bgimg});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -22,7 +23,7 @@ export const Wrapper = styled.section`
   }
 `
 
-export const Cover = styled.img`
+export const Cover = styled(motion.img)`
   position: absolute;
   top: 0;
   left: 0;
@@ -50,8 +51,14 @@ export const Title = styled(Text)`
   font-size: ${props => props.theme.fontSize.xl};
   text-align: center;
   z-index: 1;
+  line-height: 1em;
+  margin-top: 1rem;
 
   ${props => props.theme.respond.desktop} {
     text-align: left;
   }
 `
+
+Cover.defaultProps = {
+  alt: "cover movie"
+}

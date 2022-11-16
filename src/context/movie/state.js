@@ -3,7 +3,7 @@ import MoviesContext from './context'
 import moviesReducer from './reducer'
 import { SET_FEATURED, SET_POPULAR, GET_MY_MOVIES, UPLOAD_MOVIES, SET_SHOW_LIST } from 'types/movie'
 import clientAxios, { getUrl } from 'config/axios'
-import { listType } from 'utils/listType'
+import { listType } from 'utils'
 
 const MoviesState = ({ children }) => {
 

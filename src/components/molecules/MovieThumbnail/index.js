@@ -1,9 +1,9 @@
 import { Text } from "components/atoms";
 import { Wrapper, Player } from "./styled"
 
-const Thumbnail = ({ cover, title }) => {
+const Thumbnail = ({ cover, title, variants, custom }) => {
   return (
-    <Wrapper bgImg={cover}>
+    <Wrapper bgimg={cover} variants={variants} custom={custom}>
       <Player/>
       <Text zIndex="1" textAlign="center">{title}</Text>
     </Wrapper>

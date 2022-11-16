@@ -17,7 +17,6 @@ const Loadfile = ({ name, onChange, successScreen, file, handleCancel, loaded, s
       setTimeout(() => { setLoaded(81) }, 6100)
       setTimeout(() => { setLoaded(93) }, 6800)
       setTimeout(() => { setLoaded(100) }, 7200)
-      // setTimeout(() => { setLoaded(100) }, 100)
     }
     // eslint-disable-next-line
   }, [file])
@@ -48,7 +47,8 @@ const Loadfile = ({ name, onChange, successScreen, file, handleCancel, loaded, s
           )
       ) : (
         <>
-          <Input onChange={onChange} name={name} type="file" />
+          <label className="hidden" htmlFor="file">file</label>
+          <Input id="file" onChange={onChange} name={name} type="file" />
           <Clip/>
           <Text display="flex" gap=".5rem">Agregá un archivo <Span> o arrastralo y soltalo aquí</Span></Text>
         </>

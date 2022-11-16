@@ -2,8 +2,8 @@ import { useContext, useEffect } from "react"
 import movieContext from "context/movie/context"
 import { Dropdown, MovieThumbnail } from "components/molecules"
 import { Wrapper, List } from "./styled"
-import { listType } from "utils/listType"
-import { getRandomArbitrary } from "utils"
+import { getRandomArbitrary, listType } from "utils"
+import { container, item } from "./animations"
 
 const ListMovies = () => {
   const { showList, myMovies, popular, getPopular, getMyMovies } = useContext(movieContext)
@@ -21,9 +21,11 @@ const ListMovies = () => {
   return (
     <Wrapper>
       <Dropdown/>
-      <List>
+      <List variants={container} initial="hidden" animate="visible">
         {movies?.slice(randomNuber, randomNuber + 4).reverse().map((movie, idx) => (
           <MovieThumbnail
+            custom={idx}
+            variants={item}
             cover={movie?.file}
             title={movie?.title}
             key={idx}

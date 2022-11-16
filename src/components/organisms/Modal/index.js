@@ -3,8 +3,9 @@ import { Button, Input, Text } from "components/atoms"
 import { Loadfile } from "components/molecules"
 import modalContext from "context/modal/context"
 import movieContext from "context/movie/context"
-import { Layout, Wrapper, Close } from "./styled"
+import { Layout, Wrapper, Close, Error } from "./styled"
 import { colors } from "theme/values"
+import { allowedTypes } from "utils"
 
 const Modal = () => {
   const { show, toggleModal } = useContext(modalContext)
@@ -14,9 +15,10 @@ const Modal = () => {
   const [ loaded, setLoaded ] = useState(0)
   const [ title, setTitle ] = useState("")
   const [ file, setFile ] = useState(null)
+  const [ error, setError ] = useState(false)
 
   const isLoaded = loaded === 100
-  const isDisabled = (!title || !file) || !isLoaded
+  const isDisabled = (!title || !file) || !isLoaded || error
 
   useEffect(() => {
     getMyMovies()
@@ -25,6 +27,7 @@ const Modal = () => {
 
   const handleNext = () => {
     setSuccessScreen(true)
+    const currentFile = file.target.files[0]
 
     if(title && file) {  
       let reader = new FileReader()
@@ -34,7 +37,18 @@ const Modal = () => {
         uploadMovie(movie)
       }
 
-      reader.readAsDataURL(file.target.files[0])
+      reader.readAsDataURL(currentFile)
+    }
+  }
+
+  const handleChangeFile = e => {
+    const currentFile = e.target.files[0]
+
+    if(allowedTypes(currentFile.type)) {
+      setError(true)
+    } else {
+      setError(false)
+      setFile(e)
     }
   }
 
@@ -44,6 +58,7 @@ const Modal = () => {
     setTitle("")
     setSuccessScreen(false)
     setLoaded(0)
+    setError(false)
   }
 
   return (
@@ -54,7 +69,7 @@ const Modal = () => {
 
         <Loadfile
           name="file"
-          onChange={setFile}
+          onChange={handleChangeFile}
           successScreen={successScreen}
           file={file}
           handleCancel={handleCancel}
@@ -63,18 +78,29 @@ const Modal = () => {
           setLoaded={setLoaded}
         />
 
+        {error && (
+          <Error>
+            <span>Formato invalido, sube una portada para tu pelicula</span>
+            <span>(png, jpeg, jpg, heic)</span>
+          </Error>
+        )}
+
         {!successScreen && (
-          <Input
-            placeholder="título"
-            name="title"
-            value={title}
-            onChange={e => setTitle(e.target.value)}
-          />
+          <>
+            <label className="hidden" htmlFor="title">title</label>
+            <Input
+              id="title" 
+              placeholder="título"
+              name="title"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+            />
+          </>
         )}
 
         <Button
-          disable={isDisabled}
-          confirm={!isDisabled}
+          disable={String(isDisabled)}
+          confirm={!isDisabled ? true : undefined}
           onClick={successScreen ? handleCancel : !isDisabled ? handleNext : null}
         >
           {successScreen ? "ir a home" : "subir película"}

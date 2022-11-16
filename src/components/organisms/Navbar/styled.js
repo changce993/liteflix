@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const Wrapper = styled.header`
+export const Wrapper = styled(motion.header)`
   position: fixed;
   z-index: 1000;
   width: 100%;

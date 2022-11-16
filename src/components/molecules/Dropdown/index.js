@@ -4,7 +4,7 @@ import { ReactComponent as Check } from "assets/icons/check.svg"
 import { ReactComponent as Chevron } from "assets/icons/chevron.svg"
 import { useContext, useState } from "react";
 import movieContext from "context/movie/context"
-import { listType } from 'utils/listType'
+import { listType } from 'utils'
 
 const Dropdown = () => {
   const options =[ listType.popular, listType.myMovies ]
@@ -19,7 +19,8 @@ const Dropdown = () => {
         <Text opacity=".6" size="sm">VER:</Text>
         <Text size="sm">{showList}</Text>
         <Chevron/>
-        <input onBlur={() => setTimeout(() => setIsOpen(false), 100)}/>
+        <label className="hidden" htmlFor="dropdown">dropdown</label>
+        <input id="dropdown" onBlur={() => setTimeout(() => setIsOpen(false), 100)}/>
       </Wrapper>
 
       <Options isOpen={isOpen}>

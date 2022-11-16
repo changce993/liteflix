@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export default styled.button`
+const Button = styled(motion.button)`
   width: 248px;
   max-width: 100%;
   height: 56px;
@@ -27,3 +28,19 @@ export default styled.button`
     ]
   )};
 `
+
+Button.defaultProps = {
+  initial: { clipPath: "polygon(0 0, 0% 0, 0% 100%, 0 100%)" },
+  animate: i => ({
+    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    transition: {
+      delay: 2 + (i * 0.18),
+      duration: .5,
+      type: "spring",
+      damping: 100,
+      stiffness: 400
+    }
+  })
+}
+
+export default Button
